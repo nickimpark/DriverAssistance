@@ -27,7 +27,7 @@ if __name__ == "__main__":
         frame = cv2.resize(frame, (1280, 720))
         distance_output, vehicle_ahead = distance_estimator.operate(frame)
         try:
-            combined_output = lane_detector.process_frame(distance_output, vehicle_ahead)
+            combined_output = lane_detector.operate(distance_output, vehicle_ahead)
             # combined_output = distance_output
         except:
             combined_output = distance_output

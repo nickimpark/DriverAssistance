@@ -126,7 +126,7 @@ class LaneDetector(object):
         return warped
 
     def full_search(self, binary_warped):
-        # fit the lane line
+        # fit the lane line (for detector)
         histogram = np.sum(binary_warped[binary_warped.shape[0] // 2:, :], axis=0)
         # Create an output image to draw on and  visualize the result
         out_img = np.dstack((binary_warped, binary_warped, binary_warped)) * 255
@@ -193,9 +193,7 @@ class LaneDetector(object):
 
     @staticmethod
     def window_search(left_fit, right_fit, binary_warped, margin=100):
-        # Assume you now have a new warped binary image
-        # from the next frame of video (also called "binary_warped")
-        # It's easier to find line pixels with windows search
+        # It's easier to find line pixels with windows search (for tracker)
         nonzero = binary_warped.nonzero()
         nonzeroy = np.array(nonzero[0])
         nonzerox = np.array(nonzero[1])
